@@ -1,3 +1,3 @@
 # Blog Rest API
 
-Membuat sebuah program blog web api menggunakan bahasa pemrograman `Go` dan package `gin-gonic`.
+Created a web api blog program using the `Go` programming language and the `gin-gonic` package.
