@@ -15,16 +15,22 @@ In the picture below is the appearance of the entity relation diagram design.
 
 ## URL Route
 
-<ul>
-    <li>Middleware</li>
-    <li>User With Middleware</li>
+<ol>
+    <li>Middleware For Authentication User. This method using JWT Authentication.</li>
+    <li><b>User With Middleware</b></li>
     <ul>
-        <li>/v1/auth/user</li>
+        <li>/v1/auth/user ==> <b>GET</b></li>
     </ul>
-    <li>User Without Middleware</li>
+    <li><b>User Without Middleware</b></li>
     <ul>
-        <li>/v1/auth/sign-up</li>
-        <li>/v1/auth/get-token</li>
+        <li>/v1/auth/sign-up ==> <b>POST</b></li>
+        <li>/v1/auth/get-token ==> <b>POST</b></li>
     </ul>
-    <li><b>Still thinking</b></li>
-</ul>
+    <li><b>Categories With Middlewae Auth</b></li>
+    <ul>
+        <li>/v1/categories ==> <b>GET</b></li>
+        <li>/v1/categories ==> <b>POST</b></li>
+        <li>/v1/categories?slug=the-slug ==> <b>PUT</b></li>
+        <li>/v1/categories?slug=the-slug ==> <b>DELETE</b></li>
+    </ul>
+</ol>
