@@ -7,7 +7,7 @@ Here I use a third party package, namely:
 - [gin-gonic](https://github.com/gin-gonic/gin)
 - [bcrypt](https://golang.org/x/crypto/bcrypt)
 
-# Desain Of Entiry Relation Diagram(ERD)
+# Desain Of Entity Relation Diagram(ERD)
 
 In the picture below is the appearance of the entity relation diagram design.
 
