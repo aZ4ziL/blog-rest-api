@@ -3,6 +3,7 @@ module github.com/aZ4ziL/blog-rest-api
 go 1.19
 
 require (
+	golang.org/x/crypto v0.4.0
 	gorm.io/driver/mysql v1.4.4
 	gorm.io/gorm v1.24.2
 )
