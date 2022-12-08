@@ -26,11 +26,20 @@ In the picture below is the appearance of the entity relation diagram design.
         <li>/v1/auth/sign-up ==> <b>POST</b></li>
         <li>/v1/auth/get-token ==> <b>POST</b></li>
     </ul>
-    <li><b>Categories With Middlewae Auth</b></li>
+    <li><b>Categories With Middleware Auth</b></li>
     <ul>
         <li>/v1/categories ==> <b>GET</b></li>
         <li>/v1/categories ==> <b>POST</b></li>
-        <li>/v1/categories?slug=the-slug ==> <b>PUT</b></li>
-        <li>/v1/categories?slug=the-slug ==> <b>DELETE</b></li>
+        <li>/v1/categories?$SLUG ==> <b>PUT</b></li>
+        <li>/v1/categories?$SLUG ==> <b>DELETE</b></li>
+    </ul>
+    <li><b>Article With Middleware Auth</b></li>
+    <ul>
+        <li>/v1/article ==> <b>GET</b></li>
+        <li>/v1/article?slug=$SLUG ==> <b>GET</b></li>
+        <li>/v1/article ==> <b>GET</b></li>
+        <li>/v1/article ==> <b>POST</b></li>
+        <li>/v1/article?slug=$SLUG ==> <b>PUT</b></li>
+        <li>/v1/article?slug=$SLUG ==> <b>DELETE</b></li>
     </ul>
 </ol>
