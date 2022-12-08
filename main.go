@@ -25,5 +25,10 @@ func main() {
 	categoriesGroup.Use(middlewares.Authentication())
 	routers.CategoryRouter(categoriesGroup)
 
+	// articles group
+	articlesGroup := r.Group("/v1/articles")
+	articlesGroup.Use(middlewares.Authentication())
+	routers.ArticleRouterV1(articlesGroup)
+
 	r.Run(":8000")
 }
