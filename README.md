@@ -15,37 +15,45 @@ In the picture below is the appearance of the entity relation diagram design.
 
 ## URL Route
 
-<ol>
-    <li>Middleware For Authentication User. This method using JWT Authentication.</li>
-    <li><b>User With Middleware</b></li>
-    <ul>
-        <li>/v1/auth/user ==> <b>GET</b></li>
-    </ul>
-    <li><b>User Without Middleware</b></li>
-    <ul>
-        <li>/v1/auth/sign-up ==> <b>POST</b></li>
-        <li>/v1/auth/get-token ==> <b>POST</b></li>
-    </ul>
-    <li><b>Categories With Middleware Auth</b></li>
-    <ul>
-        <li>/v1/categories ==> <b>GET</b></li>
-        <li>/v1/categories ==> <b>POST</b></li>
-        <li>/v1/categories?$SLUG ==> <b>PUT</b></li>
-        <li>/v1/categories?$SLUG ==> <b>DELETE</b></li>
-    </ul>
-    <li><b>Article With Middleware Auth</b></li>
-    <ul>
-        <li>/v1/articles ==> <b>GET</b></li>
-        <li>/v1/articles?slug=$SLUG ==> <b>GET</b></li>
-        <li>/v1/articles ==> <b>GET</b></li>
-        <li>/v1/articles ==> <b>POST</b></li>
-        <li>/v1/articles?slug=$SLUG ==> <b>PUT</b></li>
-        <li>/v1/articles?slug=$SLUG ==> <b>DELETE</b></li>
-    </ul>
-    <li><b>Comment With Middleware Auth</b></li>
-    <ul>
-        <li>/v1/articles/comment/add?slug=$SLUG&comment_id=$id ==> <b>POST</b></li>
-        <li>/v1/articles/comment/edit?comment_id=$ID ==> <b>PUT</b></li>
-        <li>/v1/articles/comment/delete?comment_id=$ID ==> <b>DELETE</b></li>
-    </ul>
-</ol>
+### Users
+
+All methods for all users handler
+
+| URL                  | Query | Method | Description                           |
+|----------------------|-------|--------|---------------------------------------|
+| `/v1/auth/user`      |  `-`  | `GET`  | `Check the authentication with token` |
+| `/v1/auth/sign-up`   |  `-`  | `POST` | `Account Registration`                |
+| `/v1/auth/get-token  |  `-`  | `POST` | `Get New Token`                       |
+
+### Categories
+
+All methods for categories handler
+
+| URL               | Query  | Method   | Description                |
+|-------------------|--------|----------|----------------------------|
+| `/v1/categories`  | `-`    | `GET`    | `Get All Categories`       |
+| `/v1/categories` | `-`    | `POST`   | `Add New Category`         |
+| `/v1/categories`  | `slug` | `PUT`    | `Edit/Update The Category` |
+| `/v1/categories` | `slug` | `DELETE` | `Delete category with ID`  |
+
+### Articles
+
+All methods for article handlers
+
+| URL            | Query  | Method   | Description                       |
+|----------------|--------|----------|-----------------------------------|
+| `/v1/articles` | `-`    | `GET`    | `Get All Articles`                |
+| `/v1/articles` | `slug` | `GET`    | `Get Article With Slug`           |
+| `/v1/articles` | `-`    | `POST`   | `Add New Article`                 |
+| `/v1/articles` | `slug` | `PUT`    | `Edit/Update the article with ID` |
+| `/v1/articles` | `slug` | `DELETE` | `Delete the article with ID`      |
+
+### Comments
+
+All methods for comment handlers
+
+| URL                           | Query        | Method   | Description                                          |
+|-------------------------------|--------------|----------|------------------------------------------------------|
+| `/v1/articles/comment/add`    | `slug`       | `POST`   | `Create new comment with filtering the slug article` |
+| `/v1/articles/comment/edit`   | `comment_id` | `PUT`    | `Edit/Update the comment with comment id`            |
+| `/v1/articles/comment/delete` | `comment_id` | `DELETE` | `Delete the comment with given the id`               |
