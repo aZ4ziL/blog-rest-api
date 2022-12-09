@@ -46,6 +46,46 @@ func (a articleHandlerV1) All() gin.HandlerFunc {
 				views := article.Views + 1
 				models.GetDB().Model(&article).Update("views", views)
 
+				// Action query
+				// Like, DisLike or somethink
+				action := ctx.Query("action")
+				if action != "" {
+					// if this user need like to article
+					if action == "like" {
+						err := models.NewArticleModel().AddLikeToArticle(user.Credential.ID, article.ID)
+						if err != nil {
+							ctx.JSON(http.StatusOK, gin.H{
+								"status":  "error",
+								"message": err.Error(),
+							})
+							return
+						} else {
+							ctx.JSON(http.StatusOK, gin.H{
+								"status":  "success",
+								"message": "You like this article.",
+							})
+							return
+						}
+					}
+					// if this artikel need to dislike the article
+					if action == "dislike" {
+						err := models.NewArticleModel().DeleteLikeToArticle(user.Credential.ID, article.ID)
+						if err != nil {
+							ctx.JSON(http.StatusOK, gin.H{
+								"status":  "error",
+								"message": err.Error(),
+							})
+							return
+						} else {
+							ctx.JSON(http.StatusOK, gin.H{
+								"status":  "success",
+								"message": "You dislike this article.",
+							})
+							return
+						}
+					}
+				}
+
 				ctx.JSON(http.StatusOK, article)
 				return
 			} else {
