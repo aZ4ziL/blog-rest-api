@@ -54,6 +54,14 @@ func (c *commentModel) GetCommentByArticleID(articleID uint) []Comment {
 	return comments
 }
 
+// GetCommentByID
+func (c *commentModel) GetCommentByID(id uint) (Comment, error) {
+	var comment Comment
+	err := c.db.Model(&Comment{}).Where("id = ?", id).Preload("SubComments").Preload("Likes").
+		First(&comment).Error
+	return comment, err
+}
+
 // CreateSubComment
 // create new sub comment
 func (c *commentModel) CreateSubComment(subComment *SubComment) error {

@@ -35,11 +35,17 @@ In the picture below is the appearance of the entity relation diagram design.
     </ul>
     <li><b>Article With Middleware Auth</b></li>
     <ul>
-        <li>/v1/article ==> <b>GET</b></li>
-        <li>/v1/article?slug=$SLUG ==> <b>GET</b></li>
-        <li>/v1/article ==> <b>GET</b></li>
-        <li>/v1/article ==> <b>POST</b></li>
-        <li>/v1/article?slug=$SLUG ==> <b>PUT</b></li>
-        <li>/v1/article?slug=$SLUG ==> <b>DELETE</b></li>
+        <li>/v1/articles ==> <b>GET</b></li>
+        <li>/v1/articles?slug=$SLUG ==> <b>GET</b></li>
+        <li>/v1/articles ==> <b>GET</b></li>
+        <li>/v1/articles ==> <b>POST</b></li>
+        <li>/v1/articles?slug=$SLUG ==> <b>PUT</b></li>
+        <li>/v1/articles?slug=$SLUG ==> <b>DELETE</b></li>
+    </ul>
+    <li><b>Comment With Middleware Auth</b></li>
+    <ul>
+        <li>/v1/articles/comment/add?slug=$SLUG&comment_id=$id ==> <b>POST</b></li>
+        <li>/v1/articles/comment/edit?comment_id=$ID ==> <b>PUT</b></li>
+        <li>/v1/articles/comment/delete?comment_id=$ID ==> <b>DELETE</b></li>
     </ul>
 </ol>
