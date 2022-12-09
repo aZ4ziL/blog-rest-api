@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"time"
 
 	"gorm.io/gorm"
@@ -69,4 +70,65 @@ func (a *articleModel) GetAllArticles() []Article {
 		Preload("Comments").
 		Find(&articles)
 	return articles
+}
+
+// AddLikeToArticle
+// add like to article
+func (a *articleModel) AddLikeToArticle(userID, articleID uint) error {
+	userModel := NewUserModel()
+
+	user, err := userModel.GetUserByID(userID)
+	if err != nil {
+		return err
+	}
+
+	article, err := a.GetArticleByID(articleID)
+	if err != nil {
+		return err
+	}
+
+	var isJoined bool
+	for _, userLike := range article.Likes {
+		if userLike.ID == user.ID {
+			isJoined = true
+		}
+	}
+
+	if !isJoined {
+		a.db.Model(&article).Association("Likes").Append([]*User{&user})
+	} else {
+		return errors.New("you has already liked this article")
+	}
+
+	return nil
+}
+
+// DeleteLikeToArticle
+func (a *articleModel) DeleteLikeToArticle(userID, articleID uint) error {
+	userModel := NewUserModel()
+
+	user, err := userModel.GetUserByID(userID)
+	if err != nil {
+		return err
+	}
+
+	article, err := a.GetArticleByID(articleID)
+	if err != nil {
+		return err
+	}
+
+	var isJoined bool
+	for _, userLike := range article.Likes {
+		if userLike.ID == user.ID {
+			isJoined = true
+		}
+	}
+
+	if isJoined {
+		a.db.Model(&article).Association("Likes").Delete([]*User{&user})
+	} else {
+		return errors.New("you has not already liked this article")
+	}
+
+	return nil
 }
